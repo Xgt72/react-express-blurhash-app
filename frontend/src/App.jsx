@@ -1,12 +1,12 @@
-import Home from "@pages/Home";
-
+import UploadPicture from "@pages/UploadPicture";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <Home />
-      <p>coucou</p>
+      <main>
+        <UploadPicture />
+      </main>
     </div>
   );
 }
