@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "setup": "pnpm i && npx husky install && pnpm --prefix ./frontend i && pnpm --prefix ./backend i",
+    "setup": "npm i && npx husky install && npm --prefix ./frontend i && npm --prefix ./backend i",
+    "setup-pnpm": "pnpm i && npx husky install && pnpm --prefix ./frontend i && pnpm --prefix ./backend i",
     "migrate": "cd backend/ && node migrate.js && cd ..",
     "dev": "concurrently -n front,back -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"pnpm --prefix ./frontend run dev\" \"pnpm --prefix ./backend run dev\"",
     "dev-front": "pnpm --prefix ./frontend run dev",
     "dev-back": "pnpm --prefix ./backend run dev",
-    "lint": "pnpm --prefix ./frontend run lint && pnpm --prefix ./backend run lint",
+    "lint": "npm --prefix ./frontend run lint && npm --prefix ./backend run lint",
+    "lint-pnpm": "pnpm --prefix ./frontend run lint && pnpm --prefix ./backend run lint",
     "fix": "pnpm --prefix ./frontend run fix && pnpm --prefix ./backend run fix"
   },
   "keywords": [],

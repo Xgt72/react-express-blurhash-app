@@ -7,15 +7,15 @@ class PictureManager extends AbstractManager {
 
   insert(picture) {
     return this.connection.query(
-      `insert into ${this.table} (file, blurhash) values (?, ?)`,
-      [picture.file, picture.blurhash]
+      `insert into ${this.table} (filename, description, blurhash) values (?, ?, ?)`,
+      [picture.filename, picture.description, picture.blurhash]
     );
   }
 
   update(picture) {
     return this.connection.query(
-      `update ${this.table} set file = ?, blurhash = ? where id = ?`,
-      [picture.file, picture.blurhash, picture.id]
+      `update ${this.table} set filename = ?, description = ?, blurhash = ? where id = ?`,
+      [picture.filename, picture.description, picture.blurhash, picture.id]
     );
   }
 }
