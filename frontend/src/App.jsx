@@ -1,3 +1,4 @@
+import Gallery from "@pages/Gallery";
 import UploadPicture from "@pages/UploadPicture";
 import "./App.css";
 
@@ -6,6 +7,7 @@ function App() {
     <div className="App">
       <main>
         <UploadPicture />
+        <Gallery />
       </main>
     </div>
   );

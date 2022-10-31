@@ -25,13 +25,17 @@ const uploadPicture = (req, res, next) => {
       "../../public/assets/images",
       req.file.filename
     );
-    const blurhashString = await encodeImageToBlurhash(pictureUrl);
+    const { blurhashString, width, height } = await encodeImageToBlurhash(
+      pictureUrl
+    );
 
     // put data in req.body
     req.body = {
       filename: req.file.filename,
       description: JSON.parse(req.body.imageData).description,
       blurhash: blurhashString,
+      width,
+      height,
     };
     return next();
   });

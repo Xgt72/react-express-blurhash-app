@@ -1,10 +1,16 @@
 import { useState } from "react";
 import axios from "@services/axios";
+import Modal from "./Modal";
+import Spinner from "./Spinner";
 
 export default function CreatePicture() {
   const [description, setDescription] = useState("");
   const [file, setFile] = useState();
   const [showModal, setShowModal] = useState(false);
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +26,7 @@ export default function CreatePicture() {
     try {
       setShowModal(true);
       await axios.post("api/pictures", formData);
-      setShowModal(false);
+      closeModal();
       return alert("Image created with success!!");
     } catch (err) {
       console.error(err);
@@ -49,7 +55,13 @@ export default function CreatePicture() {
         />
       </label>
       <button type="submit">Create Picture</button>
-      {showModal && <p>Please wait, picture is Uploading</p>}
+      <Modal title="Please wait, picture is Uploading" isShowing={showModal}>
+        <Spinner
+          strokeColor="hsl(155, 100%, 50%)"
+          radius={30}
+          strokeWidth={5}
+        />
+      </Modal>
     </form>
   );
 }

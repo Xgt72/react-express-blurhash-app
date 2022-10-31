@@ -19,7 +19,7 @@ const encodeImageToBlurhash = (imageUrl) => {
       4,
       4
     );
-    return blurhashString;
+    return { blurhashString, width: image.width, height: image.height };
   });
 };
 
